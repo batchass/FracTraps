@@ -37,6 +37,7 @@ void FractrapsApp::setup()
 
 void FractrapsApp::update()
 {
+	iMouse =  getMousePos();
 }
 
 void FractrapsApp::draw()
@@ -44,11 +45,10 @@ void FractrapsApp::draw()
 	// clear the window
 	gl::clear();
 
-	// bind the shader and tell it which texture units to use (see: shader_frag.glsl)
 	mShader.bind();
 	mShader.uniform("iGlobalTime",iGlobalTime++);
 	mShader.uniform("iResolution",iResolution);
-	mShader.uniform("iMouse",getMousePos());
+	mShader.uniform("iMouse", iMouse);
 
 	gl::drawSolidRect( Rectf( getWindowBounds() ), false );
 
